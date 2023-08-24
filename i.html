@@ -10,8 +10,51 @@
 <body>
 
     <div class="container">
-        
+
+        <div class="img-box">
+
+            <img src="background_change_img/transparent.png" width="100%">
+
+            <div class="img-wrap">
+
+                <img src="background_change_img/original.jpg" id="original-img">
+
+            </div>
+
+            <span id="line">
+                <img src="background_change_img/arrow.png" alt="" class="arrow">
+            </span>
+        </div>
+
+
     </div>
+
+
+    <script>
+
+        var imgBox = document.querySelector(".img-box");
+        var imgWrap = document.querySelector(".img-wrap");
+        var originalImg = document.getElementById("original-img");
+        var line = document.getElementById("line");
+
+        // this removes width + height change and allows X axis offset of image
+        originalImg.style.width = imgBox.offsetWidth + "px";
+
+        var leftSpace = imgBox.offsetLeft;
+
+        imgBox.onmousemove = function(e){
+            // entire box with
+            // event mouse over, page position X
+            // - left Space 
+            // which is our img-box containing transparent
+            // get value in pixels
+            var boxWidth = (e.pageX - leftSpace) + "px";
+            imgWrap.style.width = boxWidth;
+            line.style.left = boxWidth;
+        }
+
+
+    </script>
 
     
 </body>
